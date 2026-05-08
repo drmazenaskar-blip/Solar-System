@@ -1,0 +1,150 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(#01012e, #240019);
+    padding-top: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+ul {
+    position: relative;
+}
+
+section {
+    background-image: url(stars1.png);
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section ul li {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+section ul:hover li a {
+    opacity: 0;
+}
+
+section ul li a {
+    display: inline-block;
+    width: 200px;
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 10px 20px;
+    background-color: darkblue;
+    border-radius: 20px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+}
+
+section ul li a:hover {
+    background-color: darkmagenta;
+    transform: scale(1.4);
+    opacity: 1;
+}
+
+/* ================li style================ */
+
+section ul li::before {
+    content: attr(data-before);
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10vw;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    opacity: 0;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+ul li::after {
+    content: attr(data-after);
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 50%;
+    width: 310px;
+    transform: translate(-50%, -50%);
+    font-size: 15px;
+    font-weight: 900;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+    white-space: normal;
+    
+}
+
+section ul li:hover::before {
+    opacity: 1;
+    top: 45%;
+}
+
+section ul li:hover::after {
+    opacity: 1;
+    top: 50%;
+}
+
+
+
+
+/* ===================================== */
+
+.planet-img {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    width: 150px;
+    opacity: 0;
+    transition: all 0.7s ease-in-out;
+    pointer-events: none;
+    z-index: 0;
+
+}
+
+
+section ul li:hover .planet-img {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+@media (max-width: 1024px){
+  section ul li::before{
+    font-size: 20vw;
+  }
+}
+@media (min-width: 1024px) {
+    ul li::after {
+        font-size: 25px;
+        width: fit-content;
+        white-space: nowrap;
+    }
+
+    section ul li:hover::after {
+        opacity: 1;
+        top: 60%;
+    }
+
+    .planet-img {
+        width: 250px;
+        top: 20%;
+    }
+
+}
