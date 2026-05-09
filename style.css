@@ -17,6 +17,20 @@ ul {
     position: relative;
 }
 
+section ul li:nth-child(1):hover .planet-img { --glow-color: rgba(255, 165, 0, 0.8); } 
+section ul li:nth-child(2):hover .planet-img { --glow-color: rgba(169, 169, 169, 0.8); } 
+section ul li:nth-child(3):hover .planet-img { --glow-color: rgba(255, 223, 186, 0.8); } 
+section ul li:nth-child(4):hover .planet-img { --glow-color: rgba(0, 191, 255, 0.8); } 
+section ul li:nth-child(5):hover .planet-img { --glow-color: rgba(255, 140, 0, 0.8); } 
+section ul li:nth-child(6):hover .planet-img { --glow-color: rgba(218, 165, 32, 0.8); } 
+section ul li:nth-child(7):hover .planet-img { --glow-color: rgba(173, 216, 230, 0.8); } 
+section ul li:nth-child(8):hover .planet-img { --glow-color: rgba(0, 0, 255, 0.8); } 
+
+
+
+
+
+
 section {
     background-image: url(stars1.png);
     background-size: cover;
@@ -25,6 +39,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: backgroundMove 20s linear infinite;
 }
 
 section ul li {
@@ -49,10 +64,13 @@ section ul li a {
     letter-spacing: 4px;
     text-transform: uppercase;
     transition: all 0.5s;
+
 }
 
 section ul li a:hover {
-    background-color: darkmagenta;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transform: scale(1.4);
     opacity: 1;
 }
@@ -88,7 +106,7 @@ ul li::after {
     pointer-events: none;
     transition: 0.5s;
     white-space: normal;
-    
+
 }
 
 section ul li:hover::before {
@@ -101,7 +119,7 @@ section ul li:hover::after {
     top: 50%;
 }
 
-
+/* ================================================= */
 
 
 /* ===================================== */
@@ -123,13 +141,16 @@ section ul li:hover::after {
 section ul li:hover .planet-img {
     opacity: 0.6;
     transform: translate(-50%, -50%) scale(1);
+    animation: planetGlow 2s infinite alternate;
+    
 }
 
-@media (max-width: 1024px){
-  section ul li::before{
-    font-size: 20vw;
-  }
+@media (max-width: 1024px) {
+    section ul li::before {
+        font-size: 20vw;
+    }
 }
+
 @media (min-width: 1024px) {
     ul li::after {
         font-size: 25px;
@@ -143,8 +164,61 @@ section ul li:hover .planet-img {
     }
 
     .planet-img {
-        width: 250px;
+        width: 350px;
         top: 20%;
     }
 
+}
+
+/* ================================================= */
+section ul li:nth-child(4):hover::before {
+    top: 65%;
+}
+
+section ul li:nth-child(4):hover::after {
+    top: 75%;
+}
+
+section ul li:nth-child(4) .planet-img {
+    top: 10%;
+}
+
+/* ===================================== */
+@keyframes float {
+    0% {
+        transform: translate(-50%, -50%) translateY(0px);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) translateY(-15px);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) translateY(0px);
+    }
+}
+
+@keyframes planetPulse {
+    0% { filter: drop-shadow(0 0 5px rgba(0, 191, 255, 0.3)); }
+    50% { filter: drop-shadow(0 0 20px rgba(0, 191, 255, 0.8)); }
+    100% { filter: drop-shadow(0 0 5px rgba(0, 191, 255, 0.3)); }
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 100px 100px;
+    }
+}
+
+@keyframes planetGlow {
+    from {
+        filter: drop-shadow(0 0 10px var(--glow-color)) brightness(1.1);
+    }
+    to {
+        filter: drop-shadow(0 0 30px var(--glow-color)) brightness(1.4);
+    }
 }
